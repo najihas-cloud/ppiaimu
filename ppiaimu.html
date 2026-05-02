@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAIMU Pamekasan Research Portal</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1a2742',
+            gold: '#c9a227',
+            accent: '#2563eb',
+            surface: '#f8fafc',
+            card: '#ffffff'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    .fade-in { animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-surface text-gray-800 overflow-auto">
+  <div id="app" class="w-full h-full"><!-- Navigation -->
+   <nav id="main-nav" class="bg-navy text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center font-bold text-navy text-sm">
+       IA
+      </div><span class="font-semibold text-sm md:text-base">IAIMU Pamekasan</span>
+     </div>
+     <div class="hidden md:flex items-center gap-6 text-sm"><a href="#" onclick="showPage('home')" class="hover:text-gold transition">Beranda</a> <a href="#" onclick="showPage('login')" class="hover:text-gold transition">Login</a>
+     </div><button class="md:hidden" onclick="toggleMobile()"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-3 space-y-2 text-sm"><a href="#" onclick="showPage('home');toggleMobile()" class="block py-1">Beranda</a> <a href="#" onclick="showPage('login');toggleMobile()" class="block py-1">Login</a>
+    </div>
+   </nav><!-- HOME PAGE -->
+   <div id="page-home" class="page fade-in"><!-- Hero -->
+    <section class="relative bg-navy text-white overflow-hidden">
+     <div class="absolute inset-0 opacity-10">
+      <svg width="100%" height="100%">
+       <defs>
+        <pattern id="grid" width="40" height="40" patternunits="userSpaceOnUse">
+         <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" />
+        </pattern>
+       </defs><rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+     </div>
+     <div class="max-w-7xl mx-auto px-4 py-20 md:py-28 relative z-10">
+      <div class="max-w-3xl">
+       <h1 id="hero-title" class="heading-font text-3xl md:text-5xl font-bold leading-tight mb-4">Portal Penelitian dan Pengabdian Dosen IAIMU Pamekasan</h1>
+       <p id="hero-subtitle" class="text-lg md:text-xl text-blue-200 mb-8">Mengelola kegiatan penelitian dan pengabdian kepada masyarakat secara terpadu, transparan, dan profesional.</p><button onclick="showPage('login')" class="bg-gold text-navy font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition">Masuk ke Portal</button>
+      </div>
+     </div>
+    </section><!-- Stats -->
+    <section class="max-w-7xl mx-auto px-4 -mt-8 relative z-20">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-card rounded-xl p-5 shadow-md text-center">
+       <div class="text-2xl font-bold text-accent">
+        124
+       </div>
+       <div class="text-sm text-gray-500">
+        Penelitian
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-md text-center">
+       <div class="text-2xl font-bold text-accent">
+        87
+       </div>
+       <div class="text-sm text-gray-500">
+        Pengabdian
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-md text-center">
+       <div class="text-2xl font-bold text-accent">
+        56
+       </div>
+       <div class="text-sm text-gray-500">
+        Dosen Aktif
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-md text-center">
+       <div class="text-2xl font-bold text-accent">
+        12
+       </div>
+       <div class="text-sm text-gray-500">
+        Reviewer
+       </div>
+      </div>
+     </div>
+    </section><!-- Latest Research -->
+    <section class="max-w-7xl mx-auto px-4 py-16">
+     <h2 class="heading-font text-2xl font-bold mb-6">Penelitian Terbaru</h2>
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-card rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+       <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="book-open" class="w-5 h-5 text-accent"></i>
+       </div>
+       <h3 class="font-semibold mb-2">Implementasi Kurikulum Merdeka di Pesantren</h3>
+       <p class="text-sm text-gray-500 mb-3">Dr. Ahmad Fauzi, M.Pd</p><span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Disetujui</span>
+      </div>
+      <div class="bg-card rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+       <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="flask-conical" class="w-5 h-5 text-accent"></i>
+       </div>
+       <h3 class="font-semibold mb-2">Analisis Ekonomi Syariah UMKM Madura</h3>
+       <p class="text-sm text-gray-500 mb-3">Hj. Siti Aminah, M.E</p><span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">Dalam Review</span>
+      </div>
+      <div class="bg-card rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+       <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="users" class="w-5 h-5 text-accent"></i>
+       </div>
+       <h3 class="font-semibold mb-2">Pemberdayaan Literasi Digital Santri</h3>
+       <p class="text-sm text-gray-500 mb-3">Moh. Rizal, M.Kom</p><span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Diajukan</span>
+      </div>
+     </div>
+    </section><!-- Announcements -->
+    <section class="bg-white border-t border-gray-100">
+     <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="heading-font text-2xl font-bold mb-6">Pengumuman</h2>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4 p-4 bg-surface rounded-lg">
+        <i data-lucide="megaphone" class="w-5 h-5 text-gold mt-0.5"></i>
+        <div>
+         <p class="font-medium">Batas Pengajuan Proposal Semester Genap 2024/2025</p>
+         <p class="text-sm text-gray-500">Deadline: 30 Juni 2025</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-surface rounded-lg">
+        <i data-lucide="calendar" class="w-5 h-5 text-gold mt-0.5"></i>
+        <div>
+         <p class="font-medium">Workshop Penulisan Proposal Penelitian</p>
+         <p class="text-sm text-gray-500">15 Juli 2025 - Aula Kampus</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- LOGIN PAGE -->
+   <div id="page-login" class="page hidden fade-in">
+    <div class="max-w-md mx-auto px-4 py-16">
+     <div class="bg-card rounded-2xl shadow-lg p-8">
+      <div class="text-center mb-8">
+       <div class="w-14 h-14 bg-navy rounded-full flex items-center justify-center mx-auto mb-3">
+        <span class="text-gold font-bold">IA</span>
+       </div>
+       <h2 class="heading-font text-xl font-bold">Masuk ke Portal</h2>
+       <p class="text-sm text-gray-500 mt-1">Pilih peran dan masukkan kredensial Anda</p>
+      </div>
+      <form onsubmit="handleLogin(event)"><label class="block text-sm font-medium mb-1" for="role">Peran</label> <select id="role" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 mb-4 focus:ring-2 focus:ring-accent focus:border-transparent outline-none"> <option value="dosen">Dosen</option> <option value="reviewer">Reviewer</option> <option value="admin">Admin</option> </select> <label class="block text-sm font-medium mb-1" for="email">Email</label> <input id="email" type="email" placeholder="nama@iaimu.ac.id" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 mb-4 focus:ring-2 focus:ring-accent focus:border-transparent outline-none"> <label class="block text-sm font-medium mb-1" for="pass">Password</label> <input id="pass" type="password" placeholder="••••••••" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 mb-6 focus:ring-2 focus:ring-accent focus:border-transparent outline-none">
+       <p class="text-xs text-amber-600 bg-amber-50 p-3 rounded-lg mb-4"><i data-lucide="info" class="w-3 h-3 inline mr-1"></i>Demo: Klik masuk untuk melihat dashboard sesuai peran.</p><button type="submit" class="w-full bg-accent text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">Masuk</button>
+      </form>
+     </div>
+    </div>
+   </div><!-- DOSEN DASHBOARD -->
+   <div id="page-dosen" class="page hidden fade-in">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+     <div class="flex items-center justify-between mb-8">
+      <div>
+       <h1 class="text-2xl font-bold">Dashboard Dosen</h1>
+       <p class="text-gray-500 text-sm">Selamat datang, Dr. Ahmad Fauzi</p>
+      </div><button onclick="showPage('home')" class="text-sm text-accent hover:underline flex items-center gap-1"><i data-lucide="log-out" class="w-4 h-4"></i>Keluar</button>
+     </div><!-- Submit Proposal -->
+     <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+      <h2 class="font-semibold text-lg mb-4 flex items-center gap-2"><i data-lucide="file-plus" class="w-5 h-5 text-accent"></i>Ajukan Proposal Baru</h2>
+      <form onsubmit="submitProposal(event)"><label class="block text-sm font-medium mb-1" for="prop-title">Judul Penelitian / Pengabdian</label> <input id="prop-title" type="text" placeholder="Masukkan judul proposal" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 mb-4 outline-none focus:ring-2 focus:ring-accent"> <label class="block text-sm font-medium mb-1">Upload File (.doc/.docx)</label>
+       <div class="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center mb-4 hover:border-accent transition cursor-pointer"><i data-lucide="upload" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+        <p class="text-sm text-gray-500">Klik atau drag file ke sini</p>
+        <p class="text-xs text-gray-400">Format: .doc, .docx (Maks. 10MB)</p>
+       </div><button type="submit" class="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-blue-700 transition">Kirim Proposal</button>
+      </form>
+      <div id="submit-msg" class="hidden mt-4 p-3 bg-green-50 text-green-700 rounded-lg text-sm"></div>
+     </div><!-- Proposals List -->
+     <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="font-semibold text-lg mb-4">Proposal Saya</h2>
+      <div class="overflow-x-auto">
+       <table class="w-full text-sm">
+        <thead>
+         <tr class="text-left text-gray-500 border-b">
+          <th class="pb-3">Judul</th>
+          <th class="pb-3">Status</th>
+          <th class="pb-3">Tanggal</th>
+         </tr>
+        </thead>
+        <tbody id="dosen-proposals">
+         <tr class="border-b border-gray-50">
+          <td class="py-3 pr-4">Implementasi Kurikulum Merdeka di Pesantren</td>
+          <td><span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Disetujui</span></td>
+          <td class="text-gray-500">12 Mar 2025</td>
+         </tr>
+         <tr class="border-b border-gray-50">
+          <td class="py-3 pr-4">Pengembangan Media Pembelajaran Berbasis AI</td>
+          <td><span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">Dalam Review</span></td>
+          <td class="text-gray-500">28 Apr 2025</td>
+         </tr>
+         <tr>
+          <td class="py-3 pr-4">Studi Komparasi Metode Tahfidz</td>
+          <td><span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">Ditolak</span></td>
+          <td class="text-gray-500">5 Jan 2025</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </div>
+   </div><!-- REVIEWER DASHBOARD -->
+   <div id="page-reviewer" class="page hidden fade-in">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+     <div class="flex items-center justify-between mb-8">
+      <div>
+       <h1 class="text-2xl font-bold">Dashboard Reviewer</h1>
+       <p class="text-gray-500 text-sm">Review dan evaluasi proposal</p>
+      </div><button onclick="showPage('home')" class="text-sm text-accent hover:underline flex items-center gap-1"><i data-lucide="log-out" class="w-4 h-4"></i>Keluar</button>
+     </div>
+     <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="font-semibold text-lg mb-4">Proposal Masuk</h2>
+      <div class="space-y-4" id="reviewer-list"><!-- Item 1 -->
+       <div class="border border-gray-100 rounded-xl p-5 hover:shadow-sm transition">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+         <div>
+          <h3 class="font-medium">Pengembangan Media Pembelajaran Berbasis AI</h3>
+          <p class="text-sm text-gray-500">Dr. Ahmad Fauzi, M.Pd • 28 Apr 2025</p>
+         </div>
+         <div class="flex gap-2 flex-wrap"><button class="text-xs bg-blue-50 text-accent px-3 py-1.5 rounded-lg hover:bg-blue-100 transition">Lihat</button> <button class="text-xs bg-gray-50 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition">Download</button> <button onclick="reviewAction(this,'approve')" class="text-xs bg-green-50 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-100 transition">Setujui</button> <button onclick="reviewAction(this,'reject')" class="text-xs bg-red-50 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-100 transition">Tolak</button>
+         </div>
+        </div>
+        <div class="mt-3"><input type="text" placeholder="Tambahkan komentar/feedback..." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent">
+        </div>
+       </div><!-- Item 2 -->
+       <div class="border border-gray-100 rounded-xl p-5 hover:shadow-sm transition">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+         <div>
+          <h3 class="font-medium">Pemberdayaan Ekonomi Kreatif Pesantren</h3>
+          <p class="text-sm text-gray-500">Hj. Siti Aminah, M.E • 15 Mei 2025</p>
+         </div>
+         <div class="flex gap-2 flex-wrap"><button class="text-xs bg-blue-50 text-accent px-3 py-1.5 rounded-lg hover:bg-blue-100 transition">Lihat</button> <button class="text-xs bg-gray-50 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition">Download</button> <button onclick="reviewAction(this,'approve')" class="text-xs bg-green-50 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-100 transition">Setujui</button> <button onclick="reviewAction(this,'reject')" class="text-xs bg-red-50 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-100 transition">Tolak</button>
+         </div>
+        </div>
+        <div class="mt-3"><input type="text" placeholder="Tambahkan komentar/feedback..." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- ADMIN DASHBOARD -->
+   <div id="page-admin" class="page hidden fade-in">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+     <div class="flex items-center justify-between mb-8">
+      <div>
+       <h1 class="text-2xl font-bold">Dashboard Admin</h1>
+       <p class="text-gray-500 text-sm">Kelola pengguna dan pengajuan</p>
+      </div><button onclick="showPage('home')" class="text-sm text-accent hover:underline flex items-center gap-1"><i data-lucide="log-out" class="w-4 h-4"></i>Keluar</button>
+     </div><!-- Stats -->
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-card rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+       <div class="text-2xl font-bold text-navy">
+        56
+       </div>
+       <div class="text-xs text-gray-500">
+        Total Dosen
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+       <div class="text-2xl font-bold text-navy">
+        12
+       </div>
+       <div class="text-xs text-gray-500">
+        Reviewer
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+       <div class="text-2xl font-bold text-navy">
+        211
+       </div>
+       <div class="text-xs text-gray-500">
+        Total Proposal
+       </div>
+      </div>
+      <div class="bg-card rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+       <div class="text-2xl font-bold text-green-600">
+        89%
+       </div>
+       <div class="text-xs text-gray-500">
+        Approval Rate
+       </div>
+      </div>
+     </div><!-- Users -->
+     <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+      <div class="flex items-center justify-between mb-4">
+       <h2 class="font-semibold text-lg">Manajemen Pengguna</h2><button class="text-xs bg-accent text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center gap-1"><i data-lucide="plus" class="w-3 h-3"></i>Tambah</button>
+      </div>
+      <div class="overflow-x-auto">
+       <table class="w-full text-sm">
+        <thead>
+         <tr class="text-left text-gray-500 border-b">
+          <th class="pb-3">Nama</th>
+          <th class="pb-3">Email</th>
+          <th class="pb-3">Peran</th>
+          <th class="pb-3">Aksi</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="border-b border-gray-50">
+          <td class="py-3">Dr. Ahmad Fauzi</td>
+          <td class="text-gray-500">ahmad@iaimu.ac.id</td>
+          <td><span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Dosen</span></td>
+          <td><button class="text-xs text-accent hover:underline">Edit</button></td>
+         </tr>
+         <tr class="border-b border-gray-50">
+          <td class="py-3">Prof. Moh. Hasan</td>
+          <td class="text-gray-500">hasan@iaimu.ac.id</td>
+          <td><span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Reviewer</span></td>
+          <td><button class="text-xs text-accent hover:underline">Edit</button></td>
+         </tr>
+         <tr>
+          <td class="py-3">Admin LP2M</td>
+          <td class="text-gray-500">admin@iaimu.ac.id</td>
+          <td><span class="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full">Admin</span></td>
+          <td><button class="text-xs text-accent hover:underline">Edit</button></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div><!-- Submissions -->
+     <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="font-semibold text-lg mb-4">Semua Pengajuan</h2>
+      <div class="overflow-x-auto">
+       <table class="w-full text-sm">
+        <thead>
+         <tr class="text-left text-gray-500 border-b">
+          <th class="pb-3">Judul</th>
+          <th class="pb-3">Pengaju</th>
+          <th class="pb-3">Status</th>
+          <th class="pb-3">Tanggal</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="border-b border-gray-50">
+          <td class="py-3 pr-4">Implementasi Kurikulum Merdeka</td>
+          <td class="text-gray-500">Dr. Ahmad Fauzi</td>
+          <td><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Disetujui</span></td>
+          <td class="text-gray-500">12 Mar</td>
+         </tr>
+         <tr class="border-b border-gray-50">
+          <td class="py-3 pr-4">Media Pembelajaran Berbasis AI</td>
+          <td class="text-gray-500">Dr. Ahmad Fauzi</td>
+          <td><span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Review</span></td>
+          <td class="text-gray-500">28 Apr</td>
+         </tr>
+         <tr>
+          <td class="py-3 pr-4">Ekonomi Kreatif Pesantren</td>
+          <td class="text-gray-500">Hj. Siti Aminah</td>
+          <td><span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Review</span></td>
+          <td class="text-gray-500">15 Mei</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </div>
+   </div><!-- Footer -->
+   <footer id="main-footer" class="bg-navy text-gray-400 text-center py-6 text-sm">
+    <p>© 2025 IAIMU Pamekasan — LP2M Research &amp; Community Service Portal</p>
+   </footer>
+  </div>
+  <script>
+  // Page navigation
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    const target = document.getElementById('page-' + page);
+    if (target) { target.classList.remove('hidden'); target.classList.add('fade-in'); }
+    window.scrollTo(0, 0);
+  }
+
+  function toggleMobile() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const role = document.getElementById('role').value;
+    showPage(role);
+  }
+
+  function submitProposal(e) {
+    e.preventDefault();
+    const title = document.getElementById('prop-title').value;
+    if (!title.trim()) return;
+    const msg = document.getElementById('submit-msg');
+    msg.textContent = '✓ Proposal "' + title + '" berhasil diajukan!';
+    msg.classList.remove('hidden');
+    document.getElementById('prop-title').value = '';
+    // Add to table
+    const tbody = document.getElementById('dosen-proposals');
+    const tr = document.createElement('tr');
+    tr.className = 'border-b border-gray-50';
+    tr.innerHTML = `<td class="py-3 pr-4">${title}</td><td><span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Diajukan</span></td><td class="text-gray-500">Hari ini</td>`;
+    tbody.insertBefore(tr, tbody.firstChild);
+    setTimeout(() => msg.classList.add('hidden'), 3000);
+  }
+
+  function reviewAction(btn, action) {
+    const card = btn.closest('.border');
+    if (action === 'approve') {
+      card.style.borderColor = '#86efac';
+      card.querySelector('h3').insertAdjacentHTML('afterend', '<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full ml-2">Disetujui</span>');
+    } else {
+      card.style.borderColor = '#fca5a5';
+      card.querySelector('h3').insertAdjacentHTML('afterend', '<span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full ml-2">Ditolak</span>');
+    }
+    btn.disabled = true;
+    btn.classList.add('opacity-50');
+  }
+
+  // Element SDK
+  const defaultConfig = {
+    portal_title: 'Portal Penelitian dan Pengabdian Dosen IAIMU Pamekasan',
+    subtitle_text: 'Mengelola kegiatan penelitian dan pengabdian kepada masyarakat secara terpadu, transparan, dan profesional.',
+    background_color: '#1a2742',
+    surface_color: '#ffffff',
+    text_color: '#1f2937',
+    primary_action: '#2563eb',
+    secondary_action: '#c9a227',
+    font_family: 'Source Sans 3',
+    font_size: 16
+  };
+
+  function applyConfig(config) {
+    const title = document.getElementById('hero-title');
+    const subtitle = document.getElementById('hero-subtitle');
+    if (title) title.textContent = config.portal_title || defaultConfig.portal_title;
+    if (subtitle) subtitle.textContent = config.subtitle_text || defaultConfig.subtitle_text;
+
+    const bg = config.background_color || defaultConfig.background_color;
+    const surface = config.surface_color || defaultConfig.surface_color;
+    const text = config.text_color || defaultConfig.text_color;
+    const primary = config.primary_action || defaultConfig.primary_action;
+    const secondary = config.secondary_action || defaultConfig.secondary_action;
+    const font = config.font_family || defaultConfig.font_family;
+    const size = config.font_size || defaultConfig.font_size;
+
+    document.documentElement.style.setProperty('--bg', bg);
+    document.getElementById('main-nav').style.backgroundColor = bg;
+    document.getElementById('main-footer').style.backgroundColor = bg;
+    document.querySelector('#page-home section').style.backgroundColor = bg;
+
+    document.querySelectorAll('.bg-card, [class*="bg-card"]').forEach(el => el.style.backgroundColor = surface);
+    document.body.style.color = text;
+    document.body.style.fontFamily = `${font}, Source Sans 3, sans-serif`;
+    document.body.style.fontSize = size + 'px';
+
+    document.querySelectorAll('.text-accent, [class*="text-accent"]').forEach(el => el.style.color = primary);
+    document.querySelectorAll('.bg-accent').forEach(el => el.style.backgroundColor = primary);
+    document.querySelectorAll('.bg-gold, .text-gold').forEach(el => {
+      if (el.classList.contains('bg-gold')) el.style.backgroundColor = secondary;
+      if (el.classList.contains('text-gold')) el.style.color = secondary;
+    });
+  }
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => { applyConfig(config); },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); } },
+        { get: () => config.secondary_action || defaultConfig.secondary_action, set: (v) => { config.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); } }
+      ],
+      borderables: [],
+      fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+      fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['portal_title', config.portal_title || defaultConfig.portal_title],
+      ['subtitle_text', config.subtitle_text || defaultConfig.subtitle_text]
+    ])
+  });
+
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f5305b1648452ea',t:'MTc3NzY4MjkyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
